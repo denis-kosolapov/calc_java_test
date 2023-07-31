@@ -10,7 +10,7 @@ public class Main {
             String result = calc(input);
             System.out.println("Вывод: " + result);
         } catch (Exception e) {
-            System.out.println("Вывод: Неправильный ввод данных, попробуйте поставить пробелы, например: 9 + 8");
+            System.out.println("Вывод: throws Exception");
         }
     }
 
@@ -36,6 +36,14 @@ public class Main {
         if (isFirstRoman) {
             a = fromRomanNumeral(firstOperand);
             b = fromRomanNumeral(secondOperand);
+            if (a < 0 || a > 10) {
+                System.out.println("Римское число больше 10 или меньше 0");
+                throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
+            }
+            if (b < 0 || b > 10) {
+                System.out.println("Римское число больше 10 или меньше 0");
+                throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
+            }
         } else {
             a = Integer.parseInt(firstOperand);
             b = Integer.parseInt(secondOperand);
@@ -114,7 +122,7 @@ public class Main {
 
     private static String toRomanNumeral(int number) {
         if (number < 1 || number > 3999) {
-            throw new IllegalArgumentException("Римские цифры допустимы только для чисел от 1 до 3999.");
+            throw new IllegalArgumentException("Roman numerals are only valid for numbers between 1 and 3999");
         }
 
         StringBuilder romanNumeral = new StringBuilder();
