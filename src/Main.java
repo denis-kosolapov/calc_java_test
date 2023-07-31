@@ -17,7 +17,8 @@ public class Main {
     public static String calc(String input) throws Exception {
         String[] parts = input.trim().split("\\s+");
         if (parts.length != 3) {
-            throw new Exception("Неверный формат ввода");
+            System.out.println("Неверный формат ввода, попробуйте вводить данные через пробел, например: 6 + 7");
+            throw new Exception();
         }
 
         String firstOperand = parts[0].trim();
@@ -27,7 +28,8 @@ public class Main {
         boolean isFirstRoman = isFirstOperandRoman(firstOperand);
         boolean isSecondRoman = isSecondOperandRoman(secondOperand);
         if (isFirstRoman != isSecondRoman) {
-            throw new Exception("Римские цифры нельзя использовать вместе с арабскими цифрами.");
+            System.out.println("Римские цифры нельзя использовать вместе с арабскими цифрами.");
+            throw new Exception();
         }
 
         int a;
@@ -36,26 +38,26 @@ public class Main {
         if (isFirstRoman) {
             a = fromRomanNumeral(firstOperand);
             b = fromRomanNumeral(secondOperand);
-            
+
             if (a < 0 || a > 10) {
                 System.out.println("Римское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
-            
+
             if (b < 0 || b > 10) {
                 System.out.println("Римское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
-            
+
         } else {
             a = Integer.parseInt(firstOperand);
             b = Integer.parseInt(secondOperand);
-            
+
             if (a < 0 || a > 10) {
                 System.out.println("Арабское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
-            
+
             if (b < 0 || b > 10) {
                 System.out.println("Арабское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
