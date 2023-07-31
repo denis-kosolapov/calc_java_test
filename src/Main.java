@@ -113,12 +113,21 @@ public class Main {
 
 
     private static String toRomanNumeral(int number) {
-        if (number < 1 || number > 10) {
-            throw new IllegalArgumentException("Римские цифры действительны только для чисел от 1 до 10.");
+        if (number < 1 || number > 3999) {
+            throw new IllegalArgumentException("Римские цифры допустимы только для чисел от 1 до 3999");
         }
 
-        String[] numerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+        StringBuilder romanNumeral = new StringBuilder();
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-        return numerals[number - 1];
+        for (int i = 0; i < values.length; i++) {
+            while (number >= values[i]) {
+                number -= values[i];
+                romanNumeral.append(numerals[i]);
+            }
+        }
+
+        return romanNumeral.toString();
     }
 }
