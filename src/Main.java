@@ -10,7 +10,7 @@ public class Main {
             String result = calc(input);
             System.out.println("Вывод: " + result);
         } catch (Exception e) {
-            System.out.println("Вывод: throws Exception");
+            System.out.println("Вывод: Неправильный ввод данных, попробуйте поставить пробелы, например: 9 + 8");
         }
     }
 
