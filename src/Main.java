@@ -36,21 +36,26 @@ public class Main {
         if (isFirstRoman) {
             a = fromRomanNumeral(firstOperand);
             b = fromRomanNumeral(secondOperand);
+            
             if (a < 0 || a > 10) {
                 System.out.println("Римское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
+            
             if (b < 0 || b > 10) {
                 System.out.println("Римское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
+            
         } else {
             a = Integer.parseInt(firstOperand);
             b = Integer.parseInt(secondOperand);
+            
             if (a < 0 || a > 10) {
                 System.out.println("Арабское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
             }
+            
             if (b < 0 || b > 10) {
                 System.out.println("Арабское число больше 10 или меньше 0");
                 throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
@@ -139,3 +144,4 @@ public class Main {
         return romanNumeral.toString();
     }
 }
+
