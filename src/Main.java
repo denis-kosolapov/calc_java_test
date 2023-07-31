@@ -5,19 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Input: ");
+            System.out.print("Ввод: ");
             String input = scanner.nextLine();
             String result = calc(input);
-            System.out.println("Output: " + result);
+            System.out.println("Вывод: " + result);
         } catch (Exception e) {
-            System.out.println("Output: throws Exception");
+            System.out.println("Вывод: throws Exception");
         }
     }
 
     public static String calc(String input) throws Exception {
         String[] parts = input.trim().split("\\s+");
         if (parts.length != 3) {
-            throw new Exception("Invalid input format");
+            throw new Exception("Неверный формат ввода");
         }
 
         String firstOperand = parts[0].trim();
@@ -27,7 +27,7 @@ public class Main {
         boolean isFirstRoman = isFirstOperandRoman(firstOperand);
         boolean isSecondRoman = isSecondOperandRoman(secondOperand);
         if (isFirstRoman != isSecondRoman) {
-            throw new Exception("Roman numerals cannot be used together with Arabic numerals");
+            throw new Exception("Римские цифры нельзя использовать вместе с арабскими цифрами.");
         }
 
         int a;
@@ -39,6 +39,14 @@ public class Main {
         } else {
             a = Integer.parseInt(firstOperand);
             b = Integer.parseInt(secondOperand);
+            if (a < 0 || a > 10) {
+                System.out.println("Арабское число больше 10 или меньше 0");
+                throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
+            }
+            if (b < 0 || b > 10) {
+                System.out.println("Арабское число больше 10 или меньше 0");
+                throw new IllegalArgumentException("Арабское число больше 10 или меньше 0");
+            }
         }
 
         int result;
@@ -54,12 +62,12 @@ public class Main {
                 break;
             case "/":
                 if (b == 0) {
-                    throw new Exception("Division by zero is not allowed");
+                    throw new Exception("Деление на ноль не допускается");
                 }
                 result = a / b;
                 break;
             default:
-                throw new Exception("Invalid operator");
+                throw new Exception("Недопустимый оператор");
         }
 
         if (isFirstRoman) {
@@ -70,8 +78,7 @@ public class Main {
     }
 
     private static boolean isFirstOperandRoman(String operand) {
-        // Проверяем, является ли операнд римским числом
-        return operand.matches("[IVXLCDM]+");
+        return operand.matches("[IVXLCDM]+"); // Проверяем, является ли операнд римским числом
     }
 
     private static boolean isSecondOperandRoman(String operand) {
@@ -99,21 +106,19 @@ public class Main {
             } else {
                 number += value;
             }
-
             prevValue = value;
         }
-
         return number;
     }
 
+
     private static String toRomanNumeral(int number) {
         if (number < 1 || number > 10) {
-            throw new IllegalArgumentException("Roman numerals are only valid for numbers between 1 and 10");
+            throw new IllegalArgumentException("Римские цифры действительны только для чисел от 1 до 10.");
         }
 
         String[] numerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 
         return numerals[number - 1];
     }
-
 }
