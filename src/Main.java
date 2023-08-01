@@ -146,5 +146,3 @@ public class Main {
         return romanNumeral.toString();
     }
 }
-
-// это новый комментарий для проверки гитхаба
