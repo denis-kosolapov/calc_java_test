@@ -3,6 +3,7 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+calc_java_test/calc_java_test.iml
 
 ### Eclipse ###
 .apt_generated
